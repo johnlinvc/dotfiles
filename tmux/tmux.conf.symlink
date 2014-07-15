@@ -1,0 +1,61 @@
+set-option -g default-command "reattach-to-user-namespace -l zsh"
+#ctrl-a as prefix
+set -g prefix C-a
+bind C-a send-prefix
+unbind C-b
+#make it more respontive and native
+set -sg escape-time 1
+set -g base-index 1
+setw -g pane-base-index 1
+#config reload
+bind r source-file ~/.tmux.conf\; display "Reloaded!"
+#split window
+bind | split-window -h
+bind - split-window -v
+#pane movements 
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+#pane resize
+bind -r H resize-pane -L 5
+bind -r J resize-pane -D 5 
+bind -r K resize-pane -U 5
+bind -r L resize-pane -R 5
+#enable mouse
+setw -g mode-mouse on
+#make it more colorful
+set -g default-terminal "screen-256color"
+#status bar
+set -g status-fg white
+set -g status-bg black
+#window status
+setw -g window-status-fg cyan
+setw -g window-status-bg default
+setw -g window-status-attr dim
+#window status current
+setw -g window-status-current-fg white
+setw -g window-status-current-bg red
+setw -g window-status-current-attr bright
+#pane divider
+set -g pane-border-fg green
+set -g pane-border-bg black
+#pane divider current
+set -g pane-active-border-fg white
+set -g pane-active-border-bg yellow
+#command line
+set -g message-fg white
+set -g message-bg black
+set -g message-attr bright
+#left status
+set -g status-left-length 40
+set -g status-left "#[fg=green]Session: #S #[fg=yellow]#I #[fg=cyan]#P"
+#right status
+set -g status-right "#[fg=cyan]%d %b %R"
+#status justify
+set -g status-justify centre
+#unicode
+set -g status-utf8 on
+#identifying activity
+setw -g monitor-activity on
+set -g visual-activity on
