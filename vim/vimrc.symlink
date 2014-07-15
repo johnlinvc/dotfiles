@@ -129,3 +129,6 @@ set encoding=utf8
 
 " disable instant markdown
 let g:instant_markdown_autostart = 0
+
+" disable netrwlist
+let g:netrw_dirhistmax = 0
