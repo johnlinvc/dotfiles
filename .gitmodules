@@ -1,3 +1,6 @@
 [submodule "vim/vim.symlink/bundle/html-template-syntax"]
 	path = vim/vim.symlink/bundle/html-template-syntax
 	url = https://github.com/pbrisbin/html-template-syntax.git
+[submodule "vim/vim.symlink/bundle/vim-rails"]
+	path = vim/vim.symlink/bundle/vim-rails
+	url = git://github.com/tpope/vim-rails.git
