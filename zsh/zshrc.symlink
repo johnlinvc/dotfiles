@@ -25,7 +25,7 @@ alias gfhf="git flow hotfix finish"
 alias gcaa="git commit -v -a --amend"
 alias gpt="git push --tags origin"
 alias gitshowtagsbydate="git log --tags --simplify-by-decoration --pretty='format:%ai %d'"
-alias ack="ack-5.12"
+#alias ack="ack-2.12"
 # curl & json formattin
 alias pyjson="python -mjson.tool"
 cj(){curl "$*" | python -mjson.tool;}
@@ -34,6 +34,8 @@ gcamfb(){git commit -v -a -m "fix bug #$*" ;}
 
 #temp function
 stseds() {ssed -i "s|$1|$2|g" MainStoryboard.storyboard}
+
+alias sed=ssed
 
 alias hgrep="history | grep "
 #copy with progress
@@ -60,12 +62,12 @@ alias mmv='noglob zmv -W'
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git heroku git-flow git-extras osx ruby rvm rails rails3 pow encode64 brew)
+plugins=(git heroku git-flow git-extras osx ruby rvm rails pow encode64 brew)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin:/usr/sbin:/sbin:/usr/X11/bin:/usr/texbin:/Users/johnlinvc/.ec2/bin:/Users/johnlinvc/android-sdk-macosx/tools:/Users/johnlinvc/.rvm/bin:/Users/johnlinvc/.bin:$PATH
+export PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin:/usr/sbin:/sbin:/usr/X11/bin:/usr/texbin:/Users/johnlinvc/.ec2/bin:/Applications/android-sdk-macosx/platform-tools:/Users/johnlinvc/.rvm/bin:/Users/johnlinvc/.bin:$PATH
 
 export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
 
@@ -109,6 +111,8 @@ ssh-aws-johnlin-ikala () {
 }
 
 ssh-add ~/.ec2/ikala_johnlinvc_tokyo.pem 2> /dev/null
+ssh-add ~/.ec2/srmbpr.pem 2> /dev/null
+ssh-add ~/.ec2/john-mbpr-nc.pem 2> /dev/null
 
 export JYTHON_HOME=/usr/local/Cellar/jython/2.5.3/libexec
 PATH=$HOME/.cabal/bin:$PATH
@@ -117,3 +121,13 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 #brew install curl-ca-bundle
 export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
+
+dl () {
+        aria2c -s 16 -x 16 -j 16 $*
+}
+
+#force to use heroku toolbelt
+alias heroku=/usr/local/heroku/bin/heroku
+
+# OPAM configuration
+. /Users/johnlinvc/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
