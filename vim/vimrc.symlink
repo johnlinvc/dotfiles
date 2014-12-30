@@ -77,6 +77,7 @@ if has("autocmd")
   autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
   autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
   autocmd FileType json setlocal shiftwidth=2 tabstop=2
+  autocmd FileType coffee setlocal shiftwidth=2 tabstop=2 softtabstop=2
   autocmd BufRead,BufNewFile *.erb setlocal shiftwidth=2 tabstop=2
 
 
@@ -132,3 +133,13 @@ let g:instant_markdown_autostart = 0
 
 " disable netrwlist
 let g:netrw_dirhistmax = 0
+
+" always use space instead of tab
+set expandtab
+
+" ensure running zsh for rvm to work correctly
+set shell=/bin/zsh
+
+" highlight lines over 79 char
+set colorcolumn=80
+
