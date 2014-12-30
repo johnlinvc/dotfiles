@@ -25,3 +25,15 @@
 [submodule "vim/vim.symlink/bundle/vim-ragtag"]
 	path = vim/vim.symlink/bundle/vim-ragtag
 	url = https://github.com/tpope/vim-ragtag.git
+[submodule "vim/vim.symlink/bundle/vim-rvm"]
+	path = vim/vim.symlink/bundle/vim-rvm
+	url = https://github.com/tpope/vim-rvm
+[submodule "vim/vim.symlink/bundle/vim-javascript"]
+	path = vim/vim.symlink/bundle/vim-javascript
+	url = https://github.com/pangloss/vim-javascript
+[submodule "vim/vim.symlink/bundle/vim-trailing-whitespace"]
+	path = vim/vim.symlink/bundle/vim-trailing-whitespace
+	url = https://github.com/bronson/vim-trailing-whitespace.git
+[submodule "vim/vim.symlink/bundle/vim-repeat"]
+	path = vim/vim.symlink/bundle/vim-repeat
+	url = https://github.com/tpope/vim-repeat
