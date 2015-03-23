@@ -15,6 +15,7 @@ alias gpod="git push origin develop"
 alias ra="nocorrect noglob ra"
 alias tmux="nocorrect noglob tmux"
 alias vi=vim
+alias v=vim
 alias gff="git flow feature"
 alias gffs="git flow feature start"
 alias gfff="git flow feature finish"
@@ -117,7 +118,7 @@ ssh-add ~/.ec2/john-mbpr-nc.pem 2> /dev/null
 export JYTHON_HOME=/usr/local/Cellar/jython/2.5.3/libexec
 PATH=$HOME/.cabal/bin:$PATH
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$HOME/.rvm/bin:$PATH # Add RVM to PATH for scripting
 
 #brew install curl-ca-bundle
 export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
