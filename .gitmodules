@@ -46,3 +46,6 @@
 [submodule "vim/vim.symlink/vim-blockle"]
 	path = vim/vim.symlink/vim-blockle
 	url = git@github.com:jgdavey/vim-blockle.git
+[submodule "vim/vim.symlink/vim-textobj-rubyblock"]
+	path = vim/vim.symlink/vim-textobj-rubyblock
+	url = git@github.com:nelstrom/vim-textobj-rubyblock.git
