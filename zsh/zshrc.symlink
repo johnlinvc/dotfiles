@@ -114,11 +114,11 @@ ssh-aws-johnlin-ikala () {
 ssh-add ~/.ec2/ikala_johnlinvc_tokyo.pem 2> /dev/null
 ssh-add ~/.ec2/srmbpr.pem 2> /dev/null
 ssh-add ~/.ec2/john-mbpr-nc.pem 2> /dev/null
+ssh-add ~/.ssh/heroku.johnlinvc 2> /dev/null
 
 export JYTHON_HOME=/usr/local/Cellar/jython/2.5.3/libexec
 PATH=$HOME/.cabal/bin:$PATH
 
-PATH=$HOME/.rvm/bin:$PATH # Add RVM to PATH for scripting
 
 #brew install curl-ca-bundle
 export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
@@ -132,3 +132,16 @@ alias heroku=/usr/local/heroku/bin/heroku
 
 # OPAM configuration
 . /Users/johnlinvc/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+#set $EDITOR
+EDITOR=vim
+
+#pylearn2 dataset path
+export PYLEARN2_DATA_PATH=/Users/johnlinvc/tmp/pylearn2_dataset
+
+#go paths
+export GOPATH=/Users/johnlinvc/.gopath
+export PATH=$PATH:/usr/local/opt/go/libexec/bin:$GOPATH/bin
+
+#always put rvm path at the last of the zshrc
+PATH=$HOME/.rvm/bin:$PATH # Add RVM to PATH for scripting
