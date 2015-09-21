@@ -150,3 +150,5 @@ let g:rails_projections = {
                         \ "app/concerns/*.rb": {"command": "concern"},
                         \ "app/models/concerns/*.rb": {"command": "concern"}
                         \ }
+
+nmap <silent> <leader>d <Plug>DashSearch

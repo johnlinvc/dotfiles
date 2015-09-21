@@ -49,3 +49,12 @@
 [submodule "vim/vim.symlink/bundle/dash.vim"]
 	path = vim/vim.symlink/bundle/dash.vim
 	url = https://github.com/rizzatti/dash.vim.git
+[submodule "vim/vim.symlink/bundle/vim-elixir"]
+	path = vim/vim.symlink/bundle/vim-elixir
+	url = https://github.com/elixir-lang/vim-elixir.git
+[submodule "vim/vim.symlink/bundle/vim-copy-as-rtf"]
+	path = vim/vim.symlink/bundle/vim-copy-as-rtf
+	url = git@github.com:zerowidth/vim-copy-as-rtf.git
+[submodule "vim/vim.symlink/bundle/vim-swift"]
+	path = vim/vim.symlink/bundle/vim-swift
+	url = git://github.com/toyamarinyon/vim-swift.git
