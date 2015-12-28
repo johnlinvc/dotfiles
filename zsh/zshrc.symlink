@@ -16,6 +16,7 @@ alias ra="nocorrect noglob ra"
 alias tmux="nocorrect noglob tmux"
 alias vi=vim
 alias v=vim
+alias e=vim
 alias gff="git flow feature"
 alias gffs="git flow feature start"
 alias gfff="git flow feature finish"
@@ -145,3 +146,9 @@ export PATH=$PATH:/usr/local/opt/go/libexec/bin:$GOPATH/bin
 
 #always put rvm path at the last of the zshrc
 PATH=$HOME/.rvm/bin:$PATH # Add RVM to PATH for scripting
+
+#function for showing text in notification
+show-notify () {
+        CMD="display notification \""$2"\" with title\""$1"\""
+        osascript -e "${CMD}"
+}

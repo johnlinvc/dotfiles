@@ -58,3 +58,6 @@
 [submodule "vim/vim.symlink/bundle/vim-swift"]
 	path = vim/vim.symlink/bundle/vim-swift
 	url = git://github.com/toyamarinyon/vim-swift.git
+[submodule "vim/vim.symlink/bundle/vimerl"]
+	path = vim/vim.symlink/bundle/vimerl
+	url = git@github.com:jimenezrick/vimerl.git
