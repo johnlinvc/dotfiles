@@ -23,7 +23,8 @@
                 <identifier>private.remap.mini_to_mac</identifier>
                 <autogen>__KeyToKey__ KeyCode::OPTION_R,  KeyCode::COMMAND_R</autogen>
                 <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::OPTION_R</autogen>
-                <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
+                <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
+                <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
                 <autogen>__KeyToKey__ KeyCode::CONTROL_R, KeyCode::CURSOR_DOWN</autogen>
                 <autogen>__KeyToKey__ KeyCode::PAGEUP, KeyCode::CURSOR_LEFT</autogen>
                 <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP, KeyCode::CURSOR_UP</autogen>
