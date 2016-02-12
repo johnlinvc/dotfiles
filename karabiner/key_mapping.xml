@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<root>
+        <devicevendordef>
+                <vendorname>Ducky</vendorname>
+                <vendorid>0x04d9</vendorid>
+        </devicevendordef>
+        <deviceproductdef>
+                <productname>Ducky_Mini</productname>
+                <productid>0x0125</productid>
+        </deviceproductdef>
+
+        <item>
+
+                <name>disable builtin left cmd</name>
+                <identifier>private.disable_left_cmd</identifier>
+                <device_only>DeviceVendor::APPLE_COMPUTER</device_only>
+                <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::VK_NONE</autogen>
+        </item>
+
+        <item>
+                <name>Ducky_Mini</name>
+                <device_only>DeviceVendor::Ducky, DeviceProduct::Ducky_Mini</device_only>
+                <identifier>private.remap.mini_to_mac</identifier>
+                <autogen>__KeyToKey__ KeyCode::OPTION_R,  KeyCode::COMMAND_R</autogen>
+                <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::OPTION_R</autogen>
+                <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::CONTROL_L</autogen>
+                <autogen>__KeyToKey__ KeyCode::CONTROL_R, KeyCode::CURSOR_DOWN</autogen>
+                <autogen>__KeyToKey__ KeyCode::PAGEUP, KeyCode::CURSOR_LEFT</autogen>
+                <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_UP, KeyCode::CURSOR_UP</autogen>
+                <autogen>__KeyToKey__ KeyCode::CURSOR_LEFT, KeyCode::CURSOR_DOWN</autogen>
+                <autogen>__KeyToKey__ KeyCode::CURSOR_DOWN, KeyCode::CURSOR_RIGHT</autogen>
+                <autogen>__KeyToKey__ KeyCode::CURSOR_UP, KeyCode::PAGEUP</autogen>
+                <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, KeyCode::PAGEDOWN</autogen>
+                <autogen>__KeyToKey__ KeyCode::CURSOR_RIGHT, KeyCode::OPTION_R</autogen>
+        </item>
+
+</root>
