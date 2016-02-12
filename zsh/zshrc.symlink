@@ -26,6 +26,7 @@ alias gfhs="git flow hotfix start"
 alias gfhf="git flow hotfix finish"
 alias gcaa="git commit -v -a --amend"
 alias gpt="git push --tags origin"
+alias gpta="git push --tags origin && git push origin"
 alias gitshowtagsbydate="git log --tags --simplify-by-decoration --pretty='format:%ai %d'"
 #alias ack="ack-2.12"
 # curl & json formattin
@@ -77,8 +78,8 @@ export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
 export ANDROID_HOME=$HOME/android-sdk-macosx
 
 #ec2 crenditals
-export EC2_PRIVATE_KEY="$(/bin/ls "$HOME"/.ec2/pk-*.pem | /usr/bin/head -1)"
-export EC2_CERT="$(/bin/ls "$HOME"/.ec2/cert-*.pem | /usr/bin/head -1)"
+#export EC2_PRIVATE_KEY="$(/bin/ls "$HOME"/.ec2/pk-*.pem | /usr/bin/head -1)"
+#export EC2_CERT="$(/bin/ls "$HOME"/.ec2/cert-*.pem | /usr/bin/head -1)"
 export EC2_HOME="/usr/local/Library/LinkedKegs/ec2-api-tools/jars"
 
 [[ -s /Users/johnlinvc/.nvm/nvm.sh ]] && . /Users/johnlinvc/.nvm/nvm.sh # This loads NVM
@@ -152,3 +153,7 @@ show-notify () {
         CMD="display notification \""$2"\" with title\""$1"\""
         osascript -e "${CMD}"
 }
+
+alias xcode-tc="xcrun launch-with-toolchain /Library/Developer/Toolchains/swift-latest.xctoolchain"
+
+export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:$PATH
