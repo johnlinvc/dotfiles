@@ -31,10 +31,10 @@
                 <autogen>__KeyToKey__ KeyCode::CURSOR_UP, KeyCode::PAGEUP</autogen>
                 <autogen>__KeyToKey__ ConsumerKeyCode::VOLUME_DOWN, KeyCode::PAGEDOWN</autogen>
                 <autogen>__KeyToKey__ KeyCode::CURSOR_RIGHT, KeyCode::OPTION_R</autogen>
-                <autogen>__KeyToKey__ KeyCode::SHIFT_R, KeyCode::CURSOR_UP</autogen>
                 <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::CURSOR_LEFT</autogen>
                 <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::CURSOR_DOWN</autogen>
                 <autogen>__KeyToKey__ KeyCode::CONTROL_R, KeyCode::CURSOR_RIGHT</autogen>
+                <autogen>__KeyOverlaidModifier__ KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::CURSOR_UP</autogen>
         </item>
 
 </root>
