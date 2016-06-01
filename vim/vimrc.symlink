@@ -78,6 +78,7 @@ if has("autocmd")
   autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
   autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
   autocmd FileType json setlocal shiftwidth=2 tabstop=2
+  autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
   autocmd FileType erlang setlocal shiftwidth=2 tabstop=2 softtabstop=2
   autocmd FileType coffee setlocal shiftwidth=2 tabstop=2 softtabstop=2
   autocmd FileType c setlocal shiftwidth=2 tabstop=2 softtabstop=2
