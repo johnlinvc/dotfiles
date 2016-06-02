@@ -61,3 +61,6 @@
 [submodule "vim/vim.symlink/bundle/vimerl"]
 	path = vim/vim.symlink/bundle/vimerl
 	url = git@github.com:jimenezrick/vimerl.git
+[submodule "vim/vim.symlink/bundle/editorconfig-vim"]
+	path = vim/vim.symlink/bundle/editorconfig-vim
+	url = https://github.com/editorconfig/editorconfig-vim.git
