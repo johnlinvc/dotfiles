@@ -129,6 +129,11 @@ dl () {
         aria2c -s 16 -x 16 -j 16 $*
 }
 
+#running manage.py
+dj () {
+        ./manage.py $*
+}
+
 #force to use heroku toolbelt
 alias heroku=/usr/local/heroku/bin/heroku
 
@@ -161,3 +166,5 @@ export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:$PATH
 
 #pyenv
 eval "$(pyenv init -)"
+#pyenv-virtualenv
+eval "$(pyenv virtualenv-init -)"
