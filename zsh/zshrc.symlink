@@ -28,6 +28,8 @@ alias gcaa="git commit -v -a --amend"
 alias gpt="git push --tags origin"
 alias gpta="git push --tags origin && git push origin"
 alias gitshowtagsbydate="git log --tags --simplify-by-decoration --pretty='format:%ai %d'"
+alias gcob="git checkout -b"
+alias gmcb="git checkout develop; git merge --no-ff @{-1}"
 #alias ack="ack-2.12"
 # curl & json formattin
 alias pyjson="python -mjson.tool"
@@ -113,10 +115,10 @@ ssh-aws-johnlin-ikala () {
 	ssh -i ~/.ec2/ikala_johnlinvc_tokyo.pem $*
 }
 
-ssh-add ~/.ec2/ikala_johnlinvc_tokyo.pem 2> /dev/null
-ssh-add ~/.ec2/srmbpr.pem 2> /dev/null
-ssh-add ~/.ec2/john-mbpr-nc.pem 2> /dev/null
-ssh-add ~/.ssh/heroku.johnlinvc 2> /dev/null
+#ssh-add ~/.ec2/ikala_johnlinvc_tokyo.pem 2> /dev/null
+#ssh-add ~/.ec2/srmbpr.pem 2> /dev/null
+#ssh-add ~/.ec2/john-mbpr-nc.pem 2> /dev/null
+#ssh-add ~/.ssh/heroku.johnlinvc 2> /dev/null
 
 export JYTHON_HOME=/usr/local/Cellar/jython/2.5.3/libexec
 PATH=$HOME/.cabal/bin:$PATH
