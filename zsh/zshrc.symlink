@@ -172,3 +172,10 @@ export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:$PATH
 eval "$(pyenv init -)"
 #pyenv-virtualenv
 eval "$(pyenv virtualenv-init -)"
+
+ocd () {
+        DIR=`pwd`
+        pushd /tmp > /dev/null
+        nohup open -a Terminal $DIR > /dev/null
+        popd > /dev/null
+}

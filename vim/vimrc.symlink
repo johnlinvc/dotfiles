@@ -154,4 +154,17 @@ let g:rails_projections = {
                         \ "app/models/concerns/*.rb": {"command": "concern"}
                         \ }
 
-nmap <silent> <leader>d <Plug>DashSearch
+nmap <silent> gd <Plug>DashSearch
+
+if executable('ag')
+   let g:ackprg = 'ag --vimgrep'
+endif
+nmap <silent> ga :Ack <CR>
+
+" open file in relative path
+map ,e :e <C-R>=expand("%:p:h") . "/" <CR>
+map ,t :tabe <C-R>=expand("%:p:h") . "/" <CR>
+map ,s :split <C-R>=expand("%:p:h") . "/" <CR>
+
+" count current search pattern/text
+nnoremap <leader>n :%s///gn <CR>
