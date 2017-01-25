@@ -168,3 +168,6 @@ map ,s :split <C-R>=expand("%:p:h") . "/" <CR>
 
 " count current search pattern/text
 nnoremap <leader>n :%s///gn <CR>
+
+" ANTLR 4
+au BufRead,BufNewFile *.g4 set filetype=antlr4

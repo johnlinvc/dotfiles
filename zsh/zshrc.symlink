@@ -179,3 +179,9 @@ ocd () {
         nohup open -a Terminal $DIR > /dev/null
         popd > /dev/null
 }
+alias antlr4='java -Xmx500M -cp "/usr/local/Cellar/antlr/4.6/antlr-4.6-complete.jar:$CLASSPATH" org.antlr.v4.Tool'
+alias grun='java -Xmx500M -cp "/usr/local/Cellar/antlr/4.6/antlr-4.6-complete.jar:$CLASSPATH" org.antlr.v4.gui.TestRig'
+
+docker-gc () {
+        docker run --rm $* -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/.docker-gc:/etc spotify/docker-gc
+}
