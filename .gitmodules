@@ -79,3 +79,6 @@
 [submodule "vim/vim.symlink/bundle/vim-antlr"]
 	path = vim/vim.symlink/bundle/vim-antlr
 	url = https://github.com/dylon/vim-antlr.git
+[submodule "swiftenv/swiftenv.symlink"]
+	path = swiftenv/swiftenv.symlink
+	url = https://github.com/kylef/swiftenv.git
