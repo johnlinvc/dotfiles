@@ -185,3 +185,17 @@ alias grun='java -Xmx500M -cp "/usr/local/Cellar/antlr/4.6/antlr-4.6-complete.ja
 docker-gc () {
         docker run --rm $* -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/.docker-gc:/etc spotify/docker-gc
 }
+
+dk-ps () {
+        docker run --rm --privileged -v /var/run/docker.sock:/run/docker.sock -ti tomastomecek/sen
+}
+
+alias dk=docker
+alias dkc=docker-compose
+
+#Swiftenv
+export SWIFTENV_ROOT="$HOME/.swiftenv"
+export PATH="$SWIFTENV_ROOT/bin:$PATH"
+eval "$(swiftenv init -)"
+
+alias tabula-java='docker run -v `pwd`:/app --rm johnlinvc/tabula-java'

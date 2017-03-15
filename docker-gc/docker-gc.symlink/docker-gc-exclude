@@ -1,1 +1,6 @@
 ruby:2.3-onbuild
+tomastomecek/sen
+docker-hub.ichef.tw:5043/ichef/cloud2:base_image_20161121
+docker-hub.ichef.tw:5043/ichef/mysql:*
+mongo:*
+mysql:*
