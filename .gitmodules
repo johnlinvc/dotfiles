@@ -82,3 +82,6 @@
 [submodule "swiftenv/swiftenv.symlink"]
 	path = swiftenv/swiftenv.symlink
 	url = https://github.com/kylef/swiftenv.git
+[submodule "emacs/emacs.d.symlink"]
+	path = emacs/emacs.d.symlink
+	url = https://github.com/syl20bnr/spacemacs
