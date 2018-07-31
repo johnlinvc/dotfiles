@@ -74,7 +74,7 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 export PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin:/usr/sbin:/sbin:/usr/X11/bin:/usr/texbin:/Users/johnlinvc/.ec2/bin:/Applications/android-sdk-macosx/platform-tools:/Users/johnlinvc/.rvm/bin:/Users/johnlinvc/.bin:$PATH
 
-export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+export JAVA_HOME=`/usr/libexec/java_home`
 
 #android path
 export ANDROID_HOME=$HOME/android-sdk-macosx
@@ -137,7 +137,7 @@ dj () {
 }
 
 #force to use heroku toolbelt
-alias heroku=/usr/local/heroku/bin/heroku
+#alias heroku=/usr/local/heroku/bin/heroku
 
 # OPAM configuration
 . /Users/johnlinvc/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
@@ -154,6 +154,7 @@ export PATH=$PATH:/usr/local/opt/go/libexec/bin:$GOPATH/bin
 
 #always put rvm path at the last of the zshrc
 PATH=$HOME/.rvm/bin:$PATH # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
 
 #function for showing text in notification
 show-notify () {
@@ -163,6 +164,7 @@ show-notify () {
 
 alias xcode-tc="xcrun launch-with-toolchain /Library/Developer/Toolchains/swift-latest.xctoolchain"
 alias sb="swift build"
+alias st="swift test"
 alias sbc="rm -rf .build"
 
 export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:$PATH
@@ -193,9 +195,36 @@ dk-ps () {
 alias dk=docker
 alias dkc=docker-compose
 
+dks () {
+        docker run --rm -v `pwd`:/app -w /app swift:$1 /bin/bash -c "swift $2"
+}
+
 #Swiftenv
 export SWIFTENV_ROOT="$HOME/.swiftenv"
 export PATH="$SWIFTENV_ROOT/bin:$PATH"
 eval "$(swiftenv init -)"
 
 alias tabula-java='docker run -v `pwd`:/app --rm johnlinvc/tabula-java'
+take-today () {
+        take `date +'%Y/%m/%d'`
+}
+
+ave () {
+        profile=$1
+        shift
+        aws-vault exec $profile -- $@
+}
+
+alias q='QHOME=~/bin/q rlwrap -r ~/bin/q/m32/q'
+
+### Added by IBM Cloud CLI
+source /usr/local/Bluemix/bx/zsh_autocomplete
+
+export PYTHONDONTWRITEBYTECODE=1
+export PATH="/usr/local/opt/qt@5.5/bin:$PATH"
+export JVMCI_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_171.jdk/Contents/Home"
+export PATH="/Users/johnlinvc/Projs/swift-graal/mx:$PATH"
+#export EXTRA_JAVA_HOMES=$(mx --java-home "$JVMCI_HOME" jdkhome)
+
+#asdf
+source /usr/local/opt/asdf/asdf.sh

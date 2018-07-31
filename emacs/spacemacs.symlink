@@ -31,25 +31,35 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     elixir
+     sql
+     javascript
+     html
+     graphviz
+     markdown
      erlang
      swift
      xkcd
      yaml
+     terraform
      (ruby :variables ruby-version-manager 'rvm)
+     ruby-on-rails
+     nginx
      python
+     django
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      ;; ivy
-     (auto-completion :variables auto-completion-complete-with-key-sequence jk)
+     (auto-completion :variables auto-completion-complete-with-key-sequence "jk")
      ;; better-defaults
      emacs-lisp
      git
      docker
-     ;; markdown
-     ;; org
+     markdown
+     org
      (shell :variables
             shell-default-height 30
             shell-default-shell 'term
@@ -63,7 +73,13 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(pyenv-mode-auto pyenv-mode )
+   dotspacemacs-additional-packages '(
+                                      pyenv-mode-auto
+                                      pyenv-mode
+                                      column-marker
+                                      hacker-typer
+                                      vue-mode
+                                      )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -141,7 +157,7 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Inconsolata"
-                               :size 24
+                               :size 22
                                :weight normal
                                :width normal
                                :powerline-scale 1.2)
@@ -186,7 +202,7 @@ values."
    dotspacemacs-display-default-layout nil
    ;; If non nil then the last auto saved layouts are resume automatically upon
    ;; start. (default nil)
-   dotspacemacs-auto-resume-layouts t
+   dotspacemacs-auto-resume-layouts nil
    ;; Size (in MB) above which spacemacs will prompt to open the large file
    ;; literally to avoid performance issues. Opening a file literally means that
    ;; no major mode or minor modes are active. (default is 1)
@@ -298,6 +314,8 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  (setq multi-term-program-switches "--login")
+  (require 'hacker-typer)
   )
 
 (defun dotspacemacs/user-config ()
@@ -312,7 +330,61 @@ you should place your code here."
   (evil-set-initial-state 'inf-ruby-mode 'emacs)
   (setq multi-term-program-switches "--login")
   (rvm-use-default)
+  (require 'column-marker)
+  (column-marker-1 80)
   (global-git-commit-mode t)
+  (fset 'evil-visual-update-x-selection 'ignore)
+  (defun save-buffer-always ()
+    "save the buffer even when it's no changed"
+    (interactive)
+    (set-buffer-modified-p t)
+    (save-buffer)
+    )
+  (defun set-buffer-dirty (old-function &rest arguments)
+    "set the buffer to dirty"
+    (interactive)
+    (set-buffer-modified-p t)
+    (apply old-function arguments)
+    )
+  (spacemacs/set-leader-keys "fs" 'save-buffer-always)
+  (spacemacs/set-leader-keys-for-major-mode 'python-mode "dd" 'spacemacs/python-toggle-breakpoint)
+
+  (defun python-insert-self-dot ()
+    "insert self."
+    (interactive)
+    (insert "self.")
+    )
+  (spacemacs/set-leader-keys-for-major-mode 'python-mode "is" 'python-insert-self-dot)
+
+  (defun python-complete-method ()
+    "made symbol a instance method"
+    (interactive)
+    (let ((line (thing-at-point 'sentence)))
+      (progn
+        (kill-whole-line)
+        (insert (format "def %s(self):" line))
+        (insert "\n"))))
+  (spacemacs/set-leader-keys-for-major-mode 'python-mode "im" 'python-complete-method)
+
+  (spacemacs/set-leader-keys-for-major-mode 'web-mode "ss" 'web-mode-snippet-insert)
+  (defun web-mode-snippet-percent()
+    (interactive)
+    (progn
+      (web-mode-snippet-insert 'percent)
+      (evil-insert-state)
+    )
+    )
+  (spacemacs/set-leader-keys-for-major-mode 'web-mode "sp" 'web-mode-snippet-percent)
+  (setq-default web-mode-extra-snippets
+        '(("django" . (("percent" . "{% | %}")
+                       ("mustach" . "{{ | }}")
+                       ))
+          ))
+
+  (setq-default dotspacemacs-configuration-layers
+                '((python :variables python-test-runner 'pytest)))
+  (setq-default dotspacemacs-configuration-layers '(
+    (python :variables python-enable-yapf-format-on-save t)))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -324,7 +396,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (erlang xkcd swift-mode dockerfile-mode docker json-mode tablist docker-tramp json-snatcher json-reformat yaml-mode helm-company helm-c-yasnippet company-statistics company-anaconda company auto-yasnippet yasnippet ac-ispell auto-complete helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-gitignore helm-flx helm-descbinds helm-ag ace-jump-helm-line rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby pyenv-mode-auto yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode cython-mode anaconda-mode pythonic smeargle orgit org magit-gitflow gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit with-editor xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help ws-butler window-numbering which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-make helm helm-core google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump popup f s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash async aggressive-indent adaptive-wrap ace-window ace-link avy quelpa package-build spacemacs-theme))))
+    (flycheck-credo vue-mode edit-indirect ssass-mode vue-html-mode hacker-typer sql-indent winum org-category-capture org-mime fuzzy ob-elixir flycheck-mix flycheck alchemist elixir-mode magithub ghub+ apiwrap magit-gh-pulls github-search github-clone ghub github-browse-file gist gh marshal logito pcache ht pony-mode web-beautify livid-mode skewer-mode simple-httpd js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode nginx-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data projectile-rails inflections feature-mode org-projectile org-present org-pomodoro alert log4e gntp org-download htmlize gnuplot column-marker terraform-mode hcl-mode graphviz-dot-mode mmm-mode markdown-toc markdown-mode gh-md erlang xkcd swift-mode dockerfile-mode docker json-mode tablist docker-tramp json-snatcher json-reformat yaml-mode helm-company helm-c-yasnippet company-statistics company-anaconda company auto-yasnippet yasnippet ac-ispell auto-complete helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-gitignore helm-flx helm-descbinds helm-ag ace-jump-helm-line rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby pyenv-mode-auto yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode cython-mode anaconda-mode pythonic smeargle orgit org magit-gitflow gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit with-editor xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help ws-butler window-numbering which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-make helm helm-core google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump popup f s diminish define-word counsel-projectile projectile pkg-info epl counsel swiper ivy column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash async aggressive-indent adaptive-wrap ace-window ace-link avy quelpa package-build spacemacs-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
